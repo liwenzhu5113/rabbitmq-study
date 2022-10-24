@@ -55,4 +55,24 @@ public class SpringRabbitListener {
     public void listenDirectQueue2(String msg){
         System.err.println("消费者收到direct.queue2的消息:["+msg+"]");
     }
+
+    //创建一个topic类型的Queue
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(name = "topic.queue1"),
+            exchange = @Exchange(name ="liwenzhu.topic",type = ExchangeTypes.TOPIC),
+            key = "china.#"
+    ))
+    public void listenTopicQueue1(String msg){
+        System.err.println("消费者收到topic.queue1的消息:["+msg+"]");
+    }
+
+    //创建一个topic类型的Queue
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(name = "topic.queue2"),
+            exchange = @Exchange(name ="liwenzhu.topic",type = ExchangeTypes.TOPIC),
+            key = "japan.#"
+    ))
+    public void listenTopicQueue2(String msg){
+        System.err.println("消费者收到topic.queue2的消息:["+msg+"]");
+    }
 }

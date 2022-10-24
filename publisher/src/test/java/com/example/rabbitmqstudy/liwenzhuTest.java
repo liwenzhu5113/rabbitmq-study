@@ -41,4 +41,14 @@ public class liwenzhuTest {
         //发送消息
         rabbitTemplate.convertAndSend(exchangeName,"yellow",message);
     }
+
+    @Test
+    public void testSendMessageForTopicExchange() {
+        //交换机名称
+        String exchangeName = "liwenzhu.topic";
+        //消息
+        String message = "hello topic";
+        //发送消息
+        rabbitTemplate.convertAndSend(exchangeName,"china.#",message);
+    }
 }
