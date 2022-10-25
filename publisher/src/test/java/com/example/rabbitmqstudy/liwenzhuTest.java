@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class liwenzhuTest {
@@ -50,5 +53,14 @@ public class liwenzhuTest {
         String message = "hello topic";
         //发送消息
         rabbitTemplate.convertAndSend(exchangeName,"china.#",message);
+    }
+
+    @Test
+    public void testSendMessageForMessageForObjectType() {
+        String queueName = "object.queue";
+        Map<String,Object> map = new HashMap<>();
+        map.put("baozi","aaaa");
+        map.put("age","die");
+        rabbitTemplate.convertAndSend(queueName,map);
     }
 }

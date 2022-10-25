@@ -7,6 +7,8 @@ import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * @author liwenzhu
  */
@@ -74,5 +76,11 @@ public class SpringRabbitListener {
     ))
     public void listenTopicQueue2(String msg){
         System.err.println("消费者收到topic.queue2的消息:["+msg+"]");
+    }
+
+    //定义一个object类型的key
+    @RabbitListener(queues = "object.queue")
+    public void listenObjectQueue(Map<Object,Object> msg){
+        System.err.println("object.queue的消息:["+msg+"]");
     }
 }

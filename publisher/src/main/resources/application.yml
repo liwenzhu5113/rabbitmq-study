@@ -1,3 +1,4 @@
+
 logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
@@ -8,3 +9,5 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+server:
+  port: 8081
